@@ -1,0 +1,6 @@
+
+A set of functions to handle alphanumeric displays compatible with
+HD44780 driver.
+
+The source code is tested on ATMEL microcontroller ATMega8, 2x16 character
+LCD display.
