@@ -4,3 +4,6 @@ HD44780 driver.
 
 The source code is tested on ATMEL microcontroller ATMega8, 2x16 character
 LCD display.
+
+This set is released under the GNU General Public License (GPL) version 3, see
+the file 'COPYING' for more information.
