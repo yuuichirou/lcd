@@ -76,6 +76,16 @@ extern uint16_t       lcd_status ;
 
 
 void lcd_hd44780_strobe (void) ;
+void lcd_hd44780_busy_wait_4bit (void) ;
+void lcd_hd44780_busy_wait_8bit (void) ;
+
+#ifdef LCD_HD44780_4BIT_HARDWARE
+  #define lcd_busy_wait lcd_hd44780_busy_wait_4bit
+#endif
+
+#ifdef LCD_HD44780_8BIT_HARDWARE
+  #define lcd_busy_wait lcd_hd44780_busy_wait_8bit
+#endif
 
 
 #endif /* _LCD_H_ */
