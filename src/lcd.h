@@ -79,6 +79,8 @@ void lcd_hd44780_strobe (void) ;
 void lcd_hd44780_busy_wait_4bit (void) ;
 void lcd_hd44780_busy_wait_8bit (void) ;
 
+void lcd_init (void) ;
+
 #ifdef LCD_HD44780_4BIT_HARDWARE
   #define lcd_busy_wait lcd_hd44780_busy_wait_4bit
 #endif
