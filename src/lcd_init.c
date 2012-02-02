@@ -67,6 +67,31 @@ void lcd_init (void)
   _delay_us (100) ;
   lcd_hd44780_strobe () ;
 
+ #ifdef LCD_HD44780_4BIT_HARDWARE
+    /* sets bus width to 4bit DATA_PORT = 0010 00xx */
+    lcd_hd44780_busy_wait_8bit () ;
+    LCD_SET_SEND_INSTRUCTION_MODE ;
+    CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) ;
+    lcd_hd44780_strobe () ;
+  #endif
+
+  /* step 2 of 5 (Function set) */
+  #ifdef LCD_HD44780_4BIT_HARDWARE
+    /* sets bus width to 4bit, 2lines, char size 5x7 DATA_PORT = 0010 10xx */
+    lcd_busy_wait () ;
+    LCD_SET_SEND_INSTRUCTION_MODE ;
+    lcd_hd44780_strobe () ;
+    SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
+    lcd_hd44780_strobe () ;
+  #endif
+  #ifdef LCD_HD44780_8BIT_HARDWARE
+    /* sets bus width to 8bit, 2lines, char size 5x7 DATA_PORT = 0011 10xx */
+    lcd_busy_wait () ;
+    LCD_SET_SEND_INSTRUCTION_MODE ;
+    SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
+    lcd_hd44780_strobe () ;
+  #endif
+
   /* LCD HD44780 driver software initialization ends here*/
 }
 
