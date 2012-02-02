@@ -53,5 +53,20 @@ void lcd_init (void)
 
   lcd_status = 0x1C1 ;
   _delay_ms (15) ;
+
+  /* LCD HD44780 driver software initialization starts here*/
+
+  /* sets bus width to 8 bit DATA PORT = 0011 00 xx */
+  LCD_SET_SEND_INSTRUCTION_MODE ;
+  SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) ;
+  SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) ;
+
+  lcd_hd44780_strobe () ;
+  _delay_ms (5) ;
+  lcd_hd44780_strobe () ;
+  _delay_us (100) ;
+  lcd_hd44780_strobe () ;
+
+  /* LCD HD44780 driver software initialization ends here*/
 }
 
