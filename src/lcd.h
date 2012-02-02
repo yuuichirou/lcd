@@ -74,4 +74,7 @@ extern unsigned int   lcd_status ;
                           SETBIT (LCD_HD44780_RW_PORT, LCD_HD44780_RW_BIT)
 
 
+void lcd_hd44780_strobe (void) ;
+
+
 #endif /* _LCD_H_ */
