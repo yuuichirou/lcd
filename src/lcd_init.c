@@ -92,6 +92,26 @@ void lcd_init (void)
     lcd_hd44780_strobe () ;
   #endif
 
+  /* step 3 of 5 (Display OFF) */
+  #ifdef LCD_HD44780_4BIT_HARDWARE
+    /* set display OFF DATA_PORT = 0000 1000 */
+    lcd_busy_wait () ;
+    LCD_SET_SEND_INSTRUCTION_MODE ;
+    CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) ;
+    CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) ;
+    lcd_hd44780_strobe () ;
+    SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
+    lcd_hd44780_strobe () ;
+  #endif
+  #ifdef LCD_HD44780_8BIT_HARDWARE
+    /* set display OFF DATA_PORT = 0000 1000 */
+    lcd_busy_wait () ;
+    LCD_SET_SEND_INSTRUCTION_MODE ;
+    CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) ;
+    CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) ;
+    lcd_hd44780_strobe () ;
+  #endif
+
   /* LCD HD44780 driver software initialization ends here*/
 }
 
