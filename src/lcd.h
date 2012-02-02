@@ -27,6 +27,7 @@
 #include "config.h"
 #include "macros.h"
 #include <util/delay.h>
+#include <stdint.h>
 
 
 /* Variable containing the LCD display status, it should be a copy of
@@ -44,7 +45,7 @@
    LCD_N_BIT    - show 2 lines or 1 line (1/0)
    LCD_F_BIT    - size of char 5x7 or 5x10 (0/1)
    default value will be 0x01C1 */
-extern unsigned int   lcd_status ;
+extern uint16_t       lcd_status ;
 
 #define LCD_I_D_BIT           0
 #define LCD_S_BIT             1
