@@ -24,7 +24,7 @@
 
 void lcd_putc (char znak)
 {
-  lcd_busy_wait () ;
+  lcd_hd44780_busy_wait () ;
   lcd_hd44780_write_data (znak) ;
 }
 

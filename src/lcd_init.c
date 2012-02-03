@@ -78,7 +78,7 @@ void lcd_init (void)
   /* step 2 of 5 (Function set) */
   #ifdef LCD_HD44780_4BIT_HARDWARE
     /* sets bus width to 4bit, 2lines, char size 5x7 DATA_PORT = 0010 10xx */
-    lcd_busy_wait () ;
+    lcd_hd44780_busy_wait () ;
     LCD_SET_SEND_INSTRUCTION_MODE ;
     lcd_hd44780_strobe () ;
     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
@@ -86,7 +86,7 @@ void lcd_init (void)
   #endif
   #ifdef LCD_HD44780_8BIT_HARDWARE
     /* sets bus width to 8bit, 2lines, char size 5x7 DATA_PORT = 0011 10xx */
-    lcd_busy_wait () ;
+    lcd_hd44780_busy_wait () ;
     LCD_SET_SEND_INSTRUCTION_MODE ;
     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
     lcd_hd44780_strobe () ;
@@ -95,7 +95,7 @@ void lcd_init (void)
   /* step 3 of 5 (Display OFF) */
   #ifdef LCD_HD44780_4BIT_HARDWARE
     /* set display OFF DATA_PORT = 0000 1000 */
-    lcd_busy_wait () ;
+    lcd_hd44780_busy_wait () ;
     LCD_SET_SEND_INSTRUCTION_MODE ;
     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) ;
     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) ;
@@ -105,7 +105,7 @@ void lcd_init (void)
   #endif
   #ifdef LCD_HD44780_8BIT_HARDWARE
     /* set display OFF DATA_PORT = 0000 1000 */
-    lcd_busy_wait () ;
+    lcd_hd44780_busy_wait () ;
     LCD_SET_SEND_INSTRUCTION_MODE ;
     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) ;
     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) ;
@@ -115,7 +115,7 @@ void lcd_init (void)
   /* step 4 of 5 (Clear display) */
   #ifdef LCD_HD44780_4BIT_HARDWARE
     /* clear display DATA_PORT = 0000 0001 */
-    lcd_busy_wait () ;
+    lcd_hd44780_busy_wait () ;
     LCD_SET_SEND_INSTRUCTION_MODE ;
     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
     lcd_hd44780_strobe () ;
@@ -124,7 +124,7 @@ void lcd_init (void)
   #endif
   #ifdef LCD_HD44780_8BIT_HARDWARE
     /* clear display DATA_PORT = 0000 0001 */
-    lcd_busy_wait () ;
+    lcd_hd44780_busy_wait () ;
     LCD_SET_SEND_INSTRUCTION_MODE ;
     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
@@ -134,7 +134,7 @@ void lcd_init (void)
   /* step 5 of 5 (Entry mode set) */
   #ifdef LCD_HD44780_4BIT_HARDWARE
     /* set set address increment (S=0) DATA_PORT = 0000 0110 */
-    lcd_busy_wait () ;
+    lcd_hd44780_busy_wait () ;
     LCD_SET_SEND_INSTRUCTION_MODE ;
     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
     lcd_hd44780_strobe () ;
@@ -144,7 +144,7 @@ void lcd_init (void)
   #endif
   #ifdef LCD_HD44780_8BIT_HARDWARE
     /* set set address increment (S=0) DATA_PORT = 0000 0110 */
-    lcd_busy_wait () ;
+    lcd_hd44780_busy_wait () ;
     LCD_SET_SEND_INSTRUCTION_MODE ;
     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
@@ -154,7 +154,7 @@ void lcd_init (void)
   /* LCD HD44780 driver software initialization ends here*/
 
   /* display ON */
-  lcd_busy_wait () ;
+  lcd_hd44780_busy_wait () ;
   LCD_SET_SEND_INSTRUCTION_MODE ;
   CLEARBITS (LCD_HD44780_DATA_PORT, BIT(LCD_HD44780_D0) |
                                     BIT(LCD_HD44780_D1) |

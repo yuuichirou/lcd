@@ -89,12 +89,12 @@ void lcd_puts (char* string) ;
 #define lcd_print lcd_puts
 
 #ifdef LCD_HD44780_4BIT_HARDWARE
-  #define lcd_busy_wait lcd_hd44780_busy_wait_4bit
+  #define lcd_hd44780_busy_wait         lcd_hd44780_busy_wait_4bit
   #define lcd_hd44780_write_data        lcd_hd44780_write_data_4bit
 #endif
 
 #ifdef LCD_HD44780_8BIT_HARDWARE
-  #define lcd_busy_wait lcd_hd44780_busy_wait_8bit
+  #define lcd_hd44780_busy_wait         lcd_hd44780_busy_wait_8bit
   #define lcd_hd44780_write_data        lcd_hd44780_write_data_8bit
 #endif
 
