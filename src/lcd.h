@@ -84,6 +84,9 @@ void lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit (uint8_t data) ;
 #define lcd_hd44780_write_data_8bit lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit
 
 void lcd_init (void) ;
+void lcd_putc (char znak) ;
+void lcd_puts (char* string) ;
+#define lcd_print lcd_puts
 
 #ifdef LCD_HD44780_4BIT_HARDWARE
   #define lcd_busy_wait lcd_hd44780_busy_wait_4bit
