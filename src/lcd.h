@@ -78,15 +78,21 @@ extern uint16_t       lcd_status ;
 void lcd_hd44780_strobe (void) ;
 void lcd_hd44780_busy_wait_4bit (void) ;
 void lcd_hd44780_busy_wait_8bit (void) ;
+void lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit (uint8_t data) ;
+#define lcd_hd44780_write_data_4bit lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit
+void lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit (uint8_t data) ;
+#define lcd_hd44780_write_data_8bit lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit
 
 void lcd_init (void) ;
 
 #ifdef LCD_HD44780_4BIT_HARDWARE
   #define lcd_busy_wait lcd_hd44780_busy_wait_4bit
+  #define lcd_hd44780_write_data        lcd_hd44780_write_data_4bit
 #endif
 
 #ifdef LCD_HD44780_8BIT_HARDWARE
   #define lcd_busy_wait lcd_hd44780_busy_wait_8bit
+  #define lcd_hd44780_write_data        lcd_hd44780_write_data_8bit
 #endif
 
 
