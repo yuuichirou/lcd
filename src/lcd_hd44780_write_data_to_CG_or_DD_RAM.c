@@ -30,36 +30,36 @@ void lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit (uint8_t data)
                                       BIT(LCD_HD44780_D5) |
                                       BIT(LCD_HD44780_D6) |
                                       BIT(LCD_HD44780_D7)) ;
-    BITVAL (data,LCD_HD44780_D7) ?
-                            SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) :
-                            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) ;
-    BITVAL (data,LCD_HD44780_D6) ?
-                            SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D6) :
-                            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D6) ;
-    BITVAL (data,LCD_HD44780_D5) ?
-                            SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) :
-                            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) ;
-    BITVAL (data,LCD_HD44780_D4) ?
-                            SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) :
-                            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) ;
+    BITVAL (data,7) ?
+                     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) :
+                     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) ;
+    BITVAL (data,6) ?
+                     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D6) :
+                     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D6) ;
+    BITVAL (data,5) ?
+                     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) :
+                     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) ;
+    BITVAL (data,4) ?
+                     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) :
+                     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) ;
     lcd_hd44780_strobe () ;
     
     CLEARBITS (LCD_HD44780_DATA_PORT, BIT(LCD_HD44780_D0) |
                                       BIT(LCD_HD44780_D1) |
                                       BIT(LCD_HD44780_D2) |
                                       BIT(LCD_HD44780_D3)) ;
-    BITVAL (data,LCD_HD44780_D3) ?
-                            SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) :
-                            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
-    BITVAL (data,LCD_HD44780_D2) ?
-                            SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) :
-                            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
-    BITVAL (data,LCD_HD44780_D1) ?
-                            SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
-                            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) ;
-    BITVAL (data,LCD_HD44780_D0) ?
-                            SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
-                            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
+    BITVAL (data,3) ?
+                     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) :
+                     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
+    BITVAL (data,2) ?
+                     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) :
+                     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
+    BITVAL (data,1) ?
+                     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
+                     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) ;
+    BITVAL (data,0) ?
+                     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
+                     CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
     lcd_hd44780_strobe () ;
   #endif
   
