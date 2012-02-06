@@ -7,7 +7,7 @@
  * This set is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
- * any later version.
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,10 +16,10 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 #ifndef _LCD_H_
 #define _LCD_H_
 
@@ -45,6 +45,7 @@
    LCD_N_BIT    - show 2 lines or 1 line (1/0)
    LCD_F_BIT    - size of char 5x7 or 5x10 (0/1)
    default value will be 0x01C1 */
+
 extern uint16_t       lcd_status ;
 
 #define LCD_I_D_BIT           0
@@ -79,14 +80,10 @@ void lcd_hd44780_strobe (void) ;
 void lcd_hd44780_busy_wait_4bit (void) ;
 void lcd_hd44780_busy_wait_8bit (void) ;
 void lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit (uint8_t data) ;
-#define lcd_hd44780_write_data_4bit lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit
 void lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit (uint8_t data) ;
-#define lcd_hd44780_write_data_8bit lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit
 
-void lcd_init (void) ;
-void lcd_putc (char znak) ;
-void lcd_puts (char* string) ;
-#define lcd_print lcd_puts
+#define lcd_hd44780_write_data_4bit  lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit
+#define lcd_hd44780_write_data_8bit  lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit
 
 #ifdef LCD_HD44780_4BIT_HARDWARE
   #define lcd_hd44780_busy_wait         lcd_hd44780_busy_wait_4bit
@@ -99,4 +96,10 @@ void lcd_puts (char* string) ;
 #endif
 
 
+void lcd_init (void) ;
+void lcd_putc (char znak) ;
+void lcd_puts (char* string) ;
+#define lcd_print lcd_puts
+
 #endif /* _LCD_H_ */
+

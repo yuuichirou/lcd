@@ -7,7 +7,7 @@
  * This set is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
- * any later version.
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,12 +16,12 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef _macros_h_
-#define _macros_h_
+#ifndef _MACROS_H_
+#define _MACROS_H_
 
 
 /* sfr_defs.h contains "#define _BV (bit) (1 <<(bit))" */
@@ -56,7 +56,7 @@
 #define PIN_INPUT(x,y)  CLEARBIT(_SFR_IO8(_SFR_IO_ADDR(x)-1), y)
 
 
-/* sets more tahn one pin of port x as input or output */
+/* sets more than one pin of port x as input or output */
 #define PINS_OUTPUT(x,y) SETBITS(_SFR_IO8(_SFR_IO_ADDR(x)-1), y)
 #define PINS_INPUT(x,y)  CLEARBITS(_SFR_IO8(_SFR_IO_ADDR(x)-1), y)
 
@@ -68,4 +68,5 @@
 #define HI    1
 #define LO    0
 
-#endif
+#endif /* _MACROS_H_ */
+
