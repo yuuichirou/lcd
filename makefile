@@ -84,7 +84,7 @@ HELP_ECHO = "Usage: make <target> <definitons>\
 \n  cleanall                 Delete all files created by building project,\
 \n                           dependency and debug files\
 \n  toolsversion             Show tools version numbers\
-\n  savetoolversion          Dump tools version numbers to file 'toolsversion'\
+\n  savetoolsversion         Dump tools version numbers to file 'toolsversion'\
 \n  debug                    Create debug files by objdump, nm, size, readelf\
 \n  cleandebug               Delete all files created by debugging rule\
 \ndefinitions:\
