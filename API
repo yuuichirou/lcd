@@ -1,0 +1,22 @@
+functions:                                           C code/     can be used in:
+    lowlevel:                                         macro       4bit    8bit
+        lcd_hd44780_strobe                              C           *       *
+        ---
+        lcd_hd44780_busy_wait_4bit                      C           *       
+        lcd_hd44780_busy_wait_8bit                      C           (1)     *
+        lcd_hd44780_busy_wait                           M           *       *
+        ---
+        lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit     C           *       
+        lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit     C                   *
+        lcd_hd44780_write_data_4bit                     M           *
+        lcd_hd44780_write_data_8bit                     M                   *
+        lcd_hd44780_write_data                          M           *       *
+        ---
+    highlevel:
+        lcd_init                                        C           *       *
+        lcd_putc                                        C           *       *
+        lcd_puts                                        C           *       *
+        lcd_print                                       M           *       *
+
+_______________________________
+(1) can be used only during initialization

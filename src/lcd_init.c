@@ -7,7 +7,7 @@
  * This set is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
- * any later version.
+ * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,12 +16,11 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
 
 #include "lcd.h"
-
 
 void lcd_init (void)
 {
@@ -29,32 +28,32 @@ void lcd_init (void)
   PIN_OUTPUT (LCD_HD44780_RS_PORT, LCD_HD44780_RS_BIT) ;
   PIN_OUTPUT (LCD_HD44780_E_PORT,  LCD_HD44780_E_BIT) ;
 
-  PINS_OUTPUT (LCD_HD44780_DATA_PORT, BIT(LCD_HD44780_D0) |
-                                      BIT(LCD_HD44780_D1) |
-                                      BIT(LCD_HD44780_D2) |
-                                      BIT(LCD_HD44780_D3) |
-                                      BIT(LCD_HD44780_D4) |
-                                      BIT(LCD_HD44780_D5) |
-                                      BIT(LCD_HD44780_D6) |
-                                      BIT(LCD_HD44780_D7)) ;
+  PINS_OUTPUT (LCD_HD44780_DATA_PORT, BIT (LCD_HD44780_D0) |
+                                      BIT (LCD_HD44780_D1) |
+                                      BIT (LCD_HD44780_D2) |
+                                      BIT (LCD_HD44780_D3) |
+                                      BIT (LCD_HD44780_D4) |
+                                      BIT (LCD_HD44780_D5) |
+                                      BIT (LCD_HD44780_D6) |
+                                      BIT (LCD_HD44780_D7)) ;
 
   CLEARBIT (LCD_HD44780_RS_PORT, LCD_HD44780_RS_BIT) ;
   CLEARBIT (LCD_HD44780_RW_PORT, LCD_HD44780_RW_BIT) ;
   CLEARBIT (LCD_HD44780_E_PORT,  LCD_HD44780_E_BIT) ;
 
-  CLEARBITS (LCD_HD44780_DATA_PORT, BIT(LCD_HD44780_D0) |
-                                    BIT(LCD_HD44780_D1) |
-                                    BIT(LCD_HD44780_D2) |
-                                    BIT(LCD_HD44780_D3) |
-                                    BIT(LCD_HD44780_D4) |
-                                    BIT(LCD_HD44780_D5) |
-                                    BIT(LCD_HD44780_D6) |
-                                    BIT(LCD_HD44780_D7)) ;
+  CLEARBITS (LCD_HD44780_DATA_PORT, BIT (LCD_HD44780_D0) |
+                                    BIT (LCD_HD44780_D1) |
+                                    BIT (LCD_HD44780_D2) |
+                                    BIT (LCD_HD44780_D3) |
+                                    BIT (LCD_HD44780_D4) |
+                                    BIT (LCD_HD44780_D5) |
+                                    BIT (LCD_HD44780_D6) |
+                                    BIT (LCD_HD44780_D7)) ;
 
   lcd_status = 0x1C1 ;
   _delay_ms (15) ;
 
-  /* LCD HD44780 driver software initialization starts here*/
+  /* LCD HD44780 driver software initialization starts here */
 
   /* sets bus width to 8 bit DATA PORT = 0011 00 xx */
   LCD_SET_SEND_INSTRUCTION_MODE ;
@@ -151,19 +150,19 @@ void lcd_init (void)
     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) ;
     lcd_hd44780_strobe () ;
   #endif
-  /* LCD HD44780 driver software initialization ends here*/
+  /* LCD HD44780 driver software initialization ends here */
 
   /* display ON */
   lcd_hd44780_busy_wait () ;
   LCD_SET_SEND_INSTRUCTION_MODE ;
-  CLEARBITS (LCD_HD44780_DATA_PORT, BIT(LCD_HD44780_D0) |
-                                    BIT(LCD_HD44780_D1) |
-                                    BIT(LCD_HD44780_D2) |
-                                    BIT(LCD_HD44780_D3) |
-                                    BIT(LCD_HD44780_D4) |
-                                    BIT(LCD_HD44780_D5) |
-                                    BIT(LCD_HD44780_D6) |
-                                    BIT(LCD_HD44780_D7)) ;
+  CLEARBITS (LCD_HD44780_DATA_PORT, BIT (LCD_HD44780_D0) |
+                                    BIT (LCD_HD44780_D1) |
+                                    BIT (LCD_HD44780_D2) |
+                                    BIT (LCD_HD44780_D3) |
+                                    BIT (LCD_HD44780_D4) |
+                                    BIT (LCD_HD44780_D5) |
+                                    BIT (LCD_HD44780_D6) |
+                                    BIT (LCD_HD44780_D7)) ;
   #ifdef LCD_HD44780_8BIT_HARDWARE
     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
     SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
