@@ -1,0 +1,10 @@
+liblcd (0.1)
+    * New functions:
+        lcd_hd44780_strobe
+        lcd_hd44780_busy_wait
+        lcd_hd44780_write_data
+        lcd_init
+        lcd_putc
+        lcd_puts
+        lcd_print
+
