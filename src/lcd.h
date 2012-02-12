@@ -103,6 +103,7 @@ void lcd_init (void) ;
 void lcd_putc (char znak) ;
 void lcd_puts (char* string) ;
 #define lcd_print lcd_puts
+void lcd_goto_xy (uint8_t x, uint8_t y) ;
 
 #endif /* _LCD_H_ */
 

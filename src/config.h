@@ -46,3 +46,6 @@
 /* #define LCD_HD44780_DATA_PORT_ON_HI_NIBBLE_PINS */
 /* #define LCD_HD44780_DATA_PORT_ON_DIFFERENT_PINS */
 
+#define LCD_WIDTH             16
+#define LCD_HEIGHT            2
+
