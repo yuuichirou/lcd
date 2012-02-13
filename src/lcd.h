@@ -83,6 +83,8 @@ void lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit (uint8_t data) ;
 void lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit (uint8_t data) ;
 void lcd_hd44780_set_DD_RAM_address_4bit (char address) ;
 
+void lcd_hd44780_clear_display_4bit (void) ;
+
 #define lcd_hd44780_write_data_4bit  lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit
 #define lcd_hd44780_write_data_8bit  lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit
 
@@ -90,6 +92,7 @@ void lcd_hd44780_set_DD_RAM_address_4bit (char address) ;
   #define lcd_hd44780_busy_wait         lcd_hd44780_busy_wait_4bit
   #define lcd_hd44780_write_data        lcd_hd44780_write_data_4bit
   #define lcd_hd44780_set_DD_RAM_address    lcd_hd44780_set_DD_RAM_address_4bit
+  #define lcd_hd44780_clear_display         lcd_hd44780_clear_display_4bit
 #endif
 
 #ifdef LCD_HD44780_8BIT_HARDWARE
@@ -104,6 +107,7 @@ void lcd_putc (char znak) ;
 void lcd_puts (char* string) ;
 #define lcd_print lcd_puts
 void lcd_goto_xy (uint8_t x, uint8_t y) ;
+#define lcd_clear_display lcd_hd44780_busy_wait () ; lcd_hd44780_clear_display
 
 #endif /* _LCD_H_ */
 
