@@ -1,3 +1,12 @@
+liblcd (0.2)
+    * New functions:
+        lcd_hd44780_set_DD_RAM_address
+        lcd_hd44780_clear_display
+        lcd_hd44780_return_home
+        lcd_goto_xy
+        lcd_clear_display
+        lcd_return_home
+
 liblcd (0.1)
     * New functions:
         lcd_hd44780_strobe

@@ -26,9 +26,13 @@ TARGET          = liblcd
 sources         = src/lcd_hd44780_strobe.c\
                   src/lcd_hd44780_busy_wait.c\
                   src/lcd_hd44780_write_data_to_CG_or_DD_RAM.c\
+                  src/lcd_hd44780_set_DD_RAM_address.c\
+                  src/lcd_hd44780_clear_display.c\
+                  src/lcd_hd44780_return_home.c\
                   src/lcd_init.c\
                   src/lcd_putc.c\
-                  src/lcd_puts.c
+                  src/lcd_puts.c\
+                  src/lcd_goto_xy.c
 
 # put object files in place where are source files
 objects = $(subst .c,.o,$(sources))
