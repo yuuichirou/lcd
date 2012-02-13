@@ -86,8 +86,3 @@ void lcd_hd44780_set_DD_RAM_address_4bit (char address)
   #endif
 }
 
-void lcd_hd44780_set_DD_RAM_address_8bit (char address)
-{
-        /* TO DO */
-}
-
