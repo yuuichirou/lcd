@@ -7,7 +7,6 @@ the file 'COPYING' for more information.
 
 The source code is tested by me on ATMEL microcontroller ATMega8, 2x16 character
 LCD display only in 4bit mode, but 8bit mode is simpler and there should not be
-major bugs. List of available function is placed in 'API' file.
-
-There is no support for 4x40 LCD display yet.
+major bugs. List of available function is placed in 'API' file. There is no
+support for 4x40 LCD display yet.
 
