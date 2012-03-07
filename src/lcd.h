@@ -115,6 +115,33 @@ void lcd_puts (char* string) ;
 void lcd_goto_xy (uint8_t x, uint8_t y) ;
 #define lcd_clear_display lcd_hd44780_busy_wait () ; lcd_hd44780_clear_display
 #define lcd_return_home   lcd_hd44780_busy_wait () ; lcd_hd44780_return_home
+#define lcd_display(D)    lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_display_on_off (\
+                                              D,\
+                                              BITSET (lcd_status, LCD_C_BIT),\
+                                              BITSET (lcd_status, LCD_B_BIT)) ;\
+                          (D) ? SETBIT   (lcd_status, LCD_D_BIT) : \
+                                CLEARBIT (lcd_status, LCD_D_BIT)
+#define lcd_display_on    lcd_display (TRUE)
+#define lcd_display_off   lcd_display (FALSE)
+#define lcd_cursor(C)     lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_display_on_off (\
+                                              BITSET (lcd_status, LCD_D_BIT),\
+                                              C,\
+                                              BITSET (lcd_status, LCD_B_BIT)) ;\
+                          (C) ? SETBIT   (lcd_status, LCD_C_BIT) : \
+                                CLEARBIT (lcd_status, LCD_C_BIT)
+#define lcd_cursor_on     lcd_cursor(TRUE)
+#define lcd_cursor_off    lcd_cursor(FALSE)
+#define lcd_blink(B)      lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_display_on_off (\
+                                              BITSET (lcd_status, LCD_D_BIT),\
+                                              BITSET (lcd_status, LCD_C_BIT),\
+                                              B) ;\
+                          (B) ? SETBIT   (lcd_status, LCD_B_BIT) : \
+                                CLEARBIT (lcd_status, LCD_B_BIT)
+#define lcd_blink_on      lcd_blink(TRUE)
+#define lcd_blink_off     lcd_blink(FALSE)
 
 #endif /* _LCD_H_ */
 
