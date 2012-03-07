@@ -29,6 +29,7 @@ sources         = src/lcd_hd44780_strobe.c\
                   src/lcd_hd44780_set_DD_RAM_address.c\
                   src/lcd_hd44780_clear_display.c\
                   src/lcd_hd44780_return_home.c\
+                  src/lcd_hd44780_display_on_off.c\
                   src/lcd_init.c\
                   src/lcd_putc.c\
                   src/lcd_puts.c\
