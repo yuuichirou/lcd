@@ -76,6 +76,11 @@ extern uint16_t       lcd_status ;
                           SETBIT (LCD_HD44780_RW_PORT, LCD_HD44780_RW_BIT)
 
 
+#define CURSOR                0
+#define DISPLAY               1
+#define LEFT                  0
+#define RIGHT                 1
+
 void lcd_hd44780_strobe (void) ;
 void lcd_hd44780_busy_wait_4bit (void) ;
 void lcd_hd44780_busy_wait_8bit (void) ;
@@ -161,6 +166,16 @@ void lcd_goto_xy (uint8_t x, uint8_t y) ;
                                               FALSE,\
                                               BITSET (lcd_status, LCD_S_BIT));\
                           CLEARBIT (lcd_status, LCD_I_D_BIT)
+#define lcd_cursor_shift(DIR) \
+                          lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_cursor_and_display_shift (CURSOR, DIR)
+#define lcd_cursor_shift_left               lcd_cursor_shift (LEFT)
+#define lcd_cursor_shift_right              lcd_cursor_shift (RIGHT)
+#define lcd_display_shift(DIR) \
+                          lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_cursor_and_display_shift (DISPLAY, DIR)
+#define lcd_display_shift_left              lcd_display_shift (LEFT)
+#define lcd_display_shift_right             lcd_display_shift (RIGHT)
 
 #endif /* _LCD_H_ */
 
