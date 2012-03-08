@@ -89,6 +89,8 @@ void lcd_hd44780_return_home_4bit (void) ;
 
 void lcd_hd44780_display_on_off_4bit (uint8_t d, uint8_t c, uint8_t b) ;
 
+void lcd_hd44780_entry_mode_set_4bit (uint8_t inc_dec, uint8_t disp_shift) ;
+
 
 #define lcd_hd44780_write_data_4bit  lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit
 #define lcd_hd44780_write_data_8bit  lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit
@@ -100,6 +102,7 @@ void lcd_hd44780_display_on_off_4bit (uint8_t d, uint8_t c, uint8_t b) ;
   #define lcd_hd44780_clear_display         lcd_hd44780_clear_display_4bit
   #define lcd_hd44780_return_home           lcd_hd44780_return_home_4bit
   #define lcd_hd44780_display_on_off        lcd_hd44780_display_on_off_4bit
+  #define lcd_hd44780_entry_mode_set        lcd_hd44780_entry_mode_set_4bit
 #endif
 
 #ifdef LCD_HD44780_8BIT_HARDWARE
