@@ -145,6 +145,18 @@ void lcd_goto_xy (uint8_t x, uint8_t y) ;
                                 CLEARBIT (lcd_status, LCD_B_BIT)
 #define lcd_blink_on      lcd_blink(TRUE)
 #define lcd_blink_off     lcd_blink(FALSE)
+#define lcd_print_left_to_right \
+                          lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_entry_mode_set (\
+                                              TRUE,\
+                                              BITSET (lcd_status, LCD_S_BIT));\
+                          SETBIT (lcd_status, LCD_I_D_BIT)
+#define lcd_print_right_to_left \
+                          lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_entry_mode_set (\
+                                              FALSE,\
+                                              BITSET (lcd_status, LCD_S_BIT));\
+                          CLEARBIT (lcd_status, LCD_I_D_BIT)
 
 #endif /* _LCD_H_ */
 
