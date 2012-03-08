@@ -113,9 +113,9 @@ compile: $(objects)
 
 
 .PHONY: lib
-lib: liblcd.a
+lib: $(TARGET).a
 
-liblcd.a: $(objects)
+$(TARGET).a: $(objects)
 	echo "creating library: $@"
 	$(AR) $(ARFLAGS) $@ $^
 
@@ -162,7 +162,7 @@ savetoolsversion:
 
 
 .PHONY: debug
-debug: $(addsuffix .debug, $(objects) liblcd.a)
+debug: $(addsuffix .debug, $(objects) $(TARGET).a)
 
 %.debug: % makefile
 	echo "creating debug files: $@.*"
@@ -192,7 +192,7 @@ cleandep:
 	rm -f $(subst .c,.d,$(sources))
 
 
-directories = $(dir $(objects) liblcd.a)
+directories = $(dir $(objects) $(TARGET).a)
 
 .PHONY: cleandebug
 cleandebug:
