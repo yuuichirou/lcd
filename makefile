@@ -115,6 +115,8 @@ compile: $(objects)
 
 .PHONY: lib
 lib: $(TARGET).a
+	ln -s src/$(subst lib,,$(TARGET)).h $(subst lib,,$(TARGET)).h
+	ln -s src/config.h config.h
 
 $(TARGET).a: $(objects)
 	echo "creating library: $@"
@@ -185,6 +187,7 @@ clean:
 	echo "removing files needed to complete project"
 	rm -rf src/*.o
 	rm -f lib*
+	rm -f $(subst lib,,$(TARGET)).h config.h
 
 
 .PHONY: cleandep
