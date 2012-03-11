@@ -21,6 +21,7 @@
  */
 
 #include "lcd.h"
+#include "macros.h"
 
 void lcd_hd44780_busy_wait_8bit (void)
 {

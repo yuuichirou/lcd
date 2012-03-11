@@ -25,7 +25,6 @@
 
 #include <avr/io.h>
 #include "config.h"
-#include "macros.h"
 #include <util/delay.h>
 #include <stdint.h>
 

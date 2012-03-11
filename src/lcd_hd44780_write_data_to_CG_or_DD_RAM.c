@@ -21,6 +21,7 @@
  */
 
 #include "lcd.h"
+#include "macros.h"
 
 void lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit (uint8_t data)
 {

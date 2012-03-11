@@ -21,6 +21,7 @@
  */
 
 #include "lcd.h"
+#include "macros.h"
 
 void lcd_init (void)
 {

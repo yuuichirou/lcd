@@ -21,6 +21,7 @@
  */
 
 #include "lcd.h"
+#include "macros.h"
 
 void lcd_goto_xy (uint8_t x, uint8_t y)
 {
