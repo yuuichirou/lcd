@@ -1,3 +1,26 @@
+liblcd (0.3)
+    * New functions:
+        lcd_hd44780_display_on_off
+        lcd_hd44780_cursor_and_display_shift
+        lcd_hd44780_entry_mode_set
+        lcd_display
+        lcd_display_on
+        lcd_display_off
+        lcd_cursor
+        lcd_cursor_on
+        lcd_cursor_off
+        lcd_blink
+        lcd_blink_on
+        lcd_blink_off
+        lcd_print_left_to_right
+        lcd_print_right_to_left
+        lcd_cursor_shift
+        lcd_cursor_shift_left
+        lcd_cursor_shift_right
+        lcd_display_shift
+        lcd_display_shift_left
+        lcd_display_shift_right
+
 liblcd (0.2)
     * New functions:
         lcd_hd44780_set_DD_RAM_address
