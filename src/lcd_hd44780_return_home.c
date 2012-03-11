@@ -22,6 +22,7 @@
 
 #include "lcd.h"
 #include "macros.h"
+#include <avr/io.h>
 
 void lcd_hd44780_return_home_4bit (void)
 {

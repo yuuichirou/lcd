@@ -22,6 +22,7 @@
 
 #include "lcd.h"
 #include "macros.h"
+#include <avr/io.h>
 
 void lcd_hd44780_entry_mode_set_4bit (uint8_t inc_dec, uint8_t disp_shift)
 {

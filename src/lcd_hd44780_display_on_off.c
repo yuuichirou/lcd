@@ -22,6 +22,7 @@
 
 #include "lcd.h"
 #include "macros.h"
+#include <avr/io.h>
 
 void lcd_hd44780_display_on_off_4bit (uint8_t display, uint8_t cursor,
                                       uint8_t blink)

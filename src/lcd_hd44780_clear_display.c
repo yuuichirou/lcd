@@ -22,6 +22,7 @@
 
 #include "lcd.h"
 #include "macros.h"
+#include <avr/io.h>
 
 void lcd_hd44780_clear_display_4bit (void)
 {

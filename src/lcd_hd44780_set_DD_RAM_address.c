@@ -22,6 +22,7 @@
 
 #include "lcd.h"
 #include "macros.h"
+#include <avr/io.h>
 
 void lcd_hd44780_set_DD_RAM_address_4bit (char address)
 {

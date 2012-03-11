@@ -22,6 +22,8 @@
 
 #include "lcd.h"
 #include "macros.h"
+#include <avr/io.h>
+#include <util/delay.h>
 
 void lcd_init (void)
 {
