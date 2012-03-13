@@ -15,5 +15,4 @@ How to use library:
     make lib TARGET_MCU=xxx F_CPU=xxx OPT=x
 2 - add header file "lcd/lcd.h" to includes.
 3 - edit lcd/config.h.
-4 - declare global variable 'uint16_t lcd_status'.
 
