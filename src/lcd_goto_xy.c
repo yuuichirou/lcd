@@ -40,3 +40,4 @@ void lcd_goto_xy (uint8_t x, uint8_t y)
   lcd_hd44780_busy_wait () ;
   lcd_hd44780_set_DD_RAM_address (address) ;
 }
+

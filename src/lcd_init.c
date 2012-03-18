@@ -25,6 +25,8 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+uint16_t       lcd_status ;
+
 void lcd_init (void)
 {
   PIN_OUTPUT (LCD_HD44780_RW_PORT, LCD_HD44780_RW_BIT) ;

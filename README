@@ -10,3 +10,9 @@ LCD display only in 4bit mode, but 8bit mode is simpler and there should not be
 major bugs. List of available function is placed in 'API' file. There is no
 support for 4x40 LCD display yet.
 
+How to use library:
+1 - compile library
+    make lib TARGET_MCU=xxx F_CPU=xxx OPT=x
+2 - add header file "lcd/lcd.h" to includes.
+3 - edit lcd/config.h.
+

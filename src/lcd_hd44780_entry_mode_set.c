@@ -33,9 +33,9 @@ void lcd_hd44780_entry_mode_set_4bit (uint8_t inc_dec, uint8_t disp_shift)
                                     BIT (LCD_HD44780_D7)) ;
   lcd_hd44780_strobe () ;
   SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
-  inc_dec    ? SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
+  inc_dec    ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
                CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) ;
-  disp_shift ? SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
+  disp_shift ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
                CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
   lcd_hd44780_strobe () ;
 }
