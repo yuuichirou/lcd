@@ -34,11 +34,11 @@ void lcd_hd44780_display_on_off_4bit (uint8_t display, uint8_t cursor,
                                     BIT (LCD_HD44780_D7)) ;
   lcd_hd44780_strobe () ;
   SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
-  display ? SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) :
+  display ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) :
             CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
-  cursor  ? SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
+  cursor  ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
             CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) ;
-  blink   ? SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
+  blink   ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
             CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
   lcd_hd44780_strobe () ;
 }
