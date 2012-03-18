@@ -23,10 +23,7 @@
 #ifndef _LCD_H_
 #define _LCD_H_
 
-#include <avr/io.h>
 #include "config.h"
-#include "macros.h"
-#include <util/delay.h>
 #include <stdint.h>
 
 
@@ -76,6 +73,11 @@ extern uint16_t       lcd_status ;
                           SETBIT (LCD_HD44780_RW_PORT, LCD_HD44780_RW_BIT)
 
 
+#define CURSOR                0
+#define DISPLAY               1
+#define LEFT                  0
+#define RIGHT                 1
+
 void lcd_hd44780_strobe (void) ;
 void lcd_hd44780_busy_wait_4bit (void) ;
 void lcd_hd44780_busy_wait_8bit (void) ;
@@ -87,6 +89,12 @@ void lcd_hd44780_clear_display_4bit (void) ;
 
 void lcd_hd44780_return_home_4bit (void) ;
 
+void lcd_hd44780_display_on_off_4bit (uint8_t d, uint8_t c, uint8_t b) ;
+
+void lcd_hd44780_entry_mode_set_4bit (uint8_t inc_dec, uint8_t disp_shift) ;
+
+void lcd_hd44780_cursor_and_display_shift_4bit (uint8_t s_c, uint8_t r_l) ;
+
 
 #define lcd_hd44780_write_data_4bit  lcd_hd44780_write_data_to_CG_or_DD_RAM_4bit
 #define lcd_hd44780_write_data_8bit  lcd_hd44780_write_data_to_CG_or_DD_RAM_8bit
@@ -97,6 +105,10 @@ void lcd_hd44780_return_home_4bit (void) ;
   #define lcd_hd44780_set_DD_RAM_address    lcd_hd44780_set_DD_RAM_address_4bit
   #define lcd_hd44780_clear_display         lcd_hd44780_clear_display_4bit
   #define lcd_hd44780_return_home           lcd_hd44780_return_home_4bit
+  #define lcd_hd44780_display_on_off        lcd_hd44780_display_on_off_4bit
+  #define lcd_hd44780_entry_mode_set        lcd_hd44780_entry_mode_set_4bit
+  #define lcd_hd44780_cursor_and_display_shift \
+                                      lcd_hd44780_cursor_and_display_shift_4bit
 #endif
 
 #ifdef LCD_HD44780_8BIT_HARDWARE
@@ -112,6 +124,55 @@ void lcd_puts (char* string) ;
 void lcd_goto_xy (uint8_t x, uint8_t y) ;
 #define lcd_clear_display lcd_hd44780_busy_wait () ; lcd_hd44780_clear_display
 #define lcd_return_home   lcd_hd44780_busy_wait () ; lcd_hd44780_return_home
+#define lcd_display(D)    lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_display_on_off (\
+                                              D,\
+                                              BITSET (lcd_status, LCD_C_BIT),\
+                                              BITSET (lcd_status, LCD_B_BIT)) ;\
+                          (D) ? SETBIT   (lcd_status, LCD_D_BIT) : \
+                                CLEARBIT (lcd_status, LCD_D_BIT)
+#define lcd_display_on()  lcd_display (TRUE)
+#define lcd_display_off() lcd_display (FALSE)
+#define lcd_cursor(C)     lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_display_on_off (\
+                                              BITSET (lcd_status, LCD_D_BIT),\
+                                              C,\
+                                              BITSET (lcd_status, LCD_B_BIT)) ;\
+                          (C) ? SETBIT   (lcd_status, LCD_C_BIT) : \
+                                CLEARBIT (lcd_status, LCD_C_BIT)
+#define lcd_cursor_on()   lcd_cursor(TRUE)
+#define lcd_cursor_off()  lcd_cursor(FALSE)
+#define lcd_blink(B)      lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_display_on_off (\
+                                              BITSET (lcd_status, LCD_D_BIT),\
+                                              BITSET (lcd_status, LCD_C_BIT),\
+                                              B) ;\
+                          (B) ? SETBIT   (lcd_status, LCD_B_BIT) : \
+                                CLEARBIT (lcd_status, LCD_B_BIT)
+#define lcd_blink_on()    lcd_blink(TRUE)
+#define lcd_blink_off()   lcd_blink(FALSE)
+#define lcd_print_left_to_right() \
+                          lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_entry_mode_set (\
+                                              TRUE,\
+                                              BITSET (lcd_status, LCD_S_BIT));\
+                          SETBIT (lcd_status, LCD_I_D_BIT)
+#define lcd_print_right_to_left() \
+                          lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_entry_mode_set (\
+                                              FALSE,\
+                                              BITSET (lcd_status, LCD_S_BIT));\
+                          CLEARBIT (lcd_status, LCD_I_D_BIT)
+#define lcd_cursor_shift(DIR) \
+                          lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_cursor_and_display_shift (CURSOR, DIR)
+#define lcd_cursor_shift_left()             lcd_cursor_shift (LEFT)
+#define lcd_cursor_shift_right()            lcd_cursor_shift (RIGHT)
+#define lcd_display_shift(DIR) \
+                          lcd_hd44780_busy_wait () ;\
+                          lcd_hd44780_cursor_and_display_shift (DISPLAY, DIR)
+#define lcd_display_shift_left()            lcd_display_shift (LEFT)
+#define lcd_display_shift_right()           lcd_display_shift (RIGHT)
 
 #endif /* _LCD_H_ */
 

@@ -1,5 +1,5 @@
 /*
- * lcd_goto_xy.c
+ * lcd_hd44780_cursor_and_display_shift.c
  * This file is part of the set of functions to handle alphanumeric displays.
  *
  * Copyright (C) 2012 Krzysztof Kozik
@@ -22,22 +22,22 @@
 
 #include "lcd.h"
 #include "macros.h"
+#include <avr/io.h>
 
-void lcd_goto_xy (uint8_t x, uint8_t y)
+void lcd_hd44780_cursor_and_display_shift_4bit (uint8_t s_c, uint8_t r_l)
 {
-  uint8_t address ;
-
-  #if (LCD_HEIGHT == 2)
-    address = x - 1 ;
-    if (y == 2) address |= 0x40 ;  /* same as "if (y==2) SETBIT(address,6);" */
-  #endif
-  #if (LCD_HEIGHT == 4)
-    address = x - 1 ;
-    if (BITCLEAR (y, 0)) address |= 0x40 ;      /* checking parity (2,4,6,8) */
-    if (y > 2) address += LCD_WIDTH ;
-  #endif
-
-  lcd_hd44780_busy_wait () ;
-  lcd_hd44780_set_DD_RAM_address (address) ;
+  LCD_SET_SEND_INSTRUCTION_MODE ;
+  CLEARBITS (LCD_HD44780_DATA_PORT, BIT (LCD_HD44780_D5) |
+                                    BIT (LCD_HD44780_D6) |
+                                    BIT (LCD_HD44780_D7)) ;
+  SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) ;
+  lcd_hd44780_strobe () ;
+  s_c ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) :
+        CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
+  r_l ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) :
+        CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
+  CLEARBITS (LCD_HD44780_DATA_PORT, BIT (LCD_HD44780_D0) |
+                                    BIT (LCD_HD44780_D1)) ;
+  lcd_hd44780_strobe () ;
 }
 

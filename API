@@ -20,14 +20,49 @@ functions:                                           C code/     can be used in:
         ---
         lcd_hd44780_return_home_4bit                    C           *       
         lcd_hd44780_return_home                         M           *       (2)
+        ---
+        lcd_hd44780_display_on_off_4bit                 C           *       
+        lcd_hd44780_display_on_off                      M           *       (2)
+        ---
+        lcd_hd44780_cursor_and_display_shift_4bit       C           *       
+        lcd_hd44780_cursor_and_display_shift            M           *       (2)
+        ---
+        lcd_hd44780_entry_mode_set_4bit                 C           *       
+        lcd_hd44780_entry_mode_set                      M           *       (2)
     highlevel:
         lcd_init                                        C           *       *
+        ---
         lcd_putc                                        C           *       *
         lcd_puts                                        C           *       *
         lcd_print                                       M           *       *
+        ---
         lcd_goto_xy                                     C           *       (2)
         lcd_return_home                                 M           *       (2)
+        ---
         lcd_clear_display                               M           *       (2)
+        ---
+        lcd_display                                     M           *       (2)
+        lcd_display_on                                  M           *       (2)
+        lcd_display_off                                 M           *       (2)
+        ---
+        lcd_cursor                                      M           *       (2)
+        lcd_cursor_on                                   M           *       (2)
+        lcd_cursor_off                                  M           *       (2)
+        ---
+        lcd_blink                                       M           *       (2)
+        lcd_blink_on                                    M           *       (2)
+        lcd_blink_off                                   M           *       (2)
+        ---
+        lcd_print_left_to_right                         M           *       (2)
+        lcd_print_right_to_left                         M           *       (2)
+        ---
+        lcd_cursor_shift                                M           *       (2)
+        lcd_cursor_shift_left                           M           *       (2)
+        lcd_cursor_shift_right                          M           *       (2)
+        ---
+        lcd_display_shift                               M           *       (2)
+        lcd_display_shift_left                          M           *       (2)
+        lcd_display_shift_right                         M           *       (2)
 
 _______________________________
 (1) can be used only during initialization

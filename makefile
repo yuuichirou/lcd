@@ -29,6 +29,9 @@ sources         = src/lcd_hd44780_strobe.c\
                   src/lcd_hd44780_set_DD_RAM_address.c\
                   src/lcd_hd44780_clear_display.c\
                   src/lcd_hd44780_return_home.c\
+                  src/lcd_hd44780_display_on_off.c\
+                  src/lcd_hd44780_entry_mode_set.c\
+                  src/lcd_hd44780_cursor_and_display_shift.c\
                   src/lcd_init.c\
                   src/lcd_putc.c\
                   src/lcd_puts.c\
@@ -111,9 +114,11 @@ compile: $(objects)
 
 
 .PHONY: lib
-lib: liblcd.a
+lib: $(TARGET).a
+	-ln -s src/$(subst lib,,$(TARGET)).h $(subst lib,,$(TARGET)).h
+	-ln -s src/config.h config.h
 
-liblcd.a: $(objects)
+$(TARGET).a: $(objects)
 	echo "creating library: $@"
 	$(AR) $(ARFLAGS) $@ $^
 
@@ -160,7 +165,7 @@ savetoolsversion:
 
 
 .PHONY: debug
-debug: $(addsuffix .debug, $(objects) liblcd.a)
+debug: $(addsuffix .debug, $(objects) $(TARGET).a)
 
 %.debug: % makefile
 	echo "creating debug files: $@.*"
@@ -182,6 +187,7 @@ clean:
 	echo "removing files needed to complete project"
 	rm -rf src/*.o
 	rm -f lib*
+	rm -f $(subst lib,,$(TARGET)).h config.h
 
 
 .PHONY: cleandep
@@ -190,7 +196,7 @@ cleandep:
 	rm -f $(subst .c,.d,$(sources))
 
 
-directories = $(dir $(objects) liblcd.a)
+directories = $(dir $(objects) $(TARGET).a)
 
 .PHONY: cleandebug
 cleandebug:

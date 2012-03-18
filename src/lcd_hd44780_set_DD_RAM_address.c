@@ -21,6 +21,8 @@
  */
 
 #include "lcd.h"
+#include "macros.h"
+#include <avr/io.h>
 
 void lcd_hd44780_set_DD_RAM_address_4bit (char address)
 {
@@ -28,31 +30,31 @@ void lcd_hd44780_set_DD_RAM_address_4bit (char address)
   SETBIT (address, 7) ;
   #ifdef LCD_HD44780_DATA_PORT_ON_DIFFERENT_PINS
     /* BITVAL (address, 7) ?
-                        SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) :
+                        SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) :
                         CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) ; */
                         SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D7) ;
     BITVAL (address, 6) ?
-                        SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D6) :
+                        SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D6) :
                         CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D6) ;
     BITVAL (address, 5) ?
-                        SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) :
+                        SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) :
                         CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D5) ;
     BITVAL (address, 4) ?
-                        SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) :
+                        SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) :
                         CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D4) ;
     lcd_hd44780_strobe () ;
 
     BITVAL (address, 3) ?
-                        SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) :
+                        SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) :
                         CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
     BITVAL (address, 2) ?
-                        SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) :
+                        SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) :
                         CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
     BITVAL (address, 1) ?
-                        SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
+                        SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
                         CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) ;
     BITVAL (address, 0) ?
-                        SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
+                        SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
                         CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
     lcd_hd44780_strobe () ;
   #endif

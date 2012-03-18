@@ -1,5 +1,5 @@
 /*
- * lcd_hd44780_clear_display.c
+ * lcd_hd44780_display_on_off.c
  * This file is part of the set of functions to handle alphanumeric displays.
  *
  * Copyright (C) 2012 Krzysztof Kozik
@@ -24,7 +24,8 @@
 #include "macros.h"
 #include <avr/io.h>
 
-void lcd_hd44780_clear_display_4bit (void)
+void lcd_hd44780_display_on_off_4bit (uint8_t display, uint8_t cursor,
+                                      uint8_t blink)
 {
   LCD_SET_SEND_INSTRUCTION_MODE ;
   CLEARBITS (LCD_HD44780_DATA_PORT, BIT (LCD_HD44780_D4) |
@@ -32,11 +33,13 @@ void lcd_hd44780_clear_display_4bit (void)
                                     BIT (LCD_HD44780_D6) |
                                     BIT (LCD_HD44780_D7)) ;
   lcd_hd44780_strobe () ;
-  CLEARBITS (LCD_HD44780_DATA_PORT, BIT (LCD_HD44780_D0) |
-                                    BIT (LCD_HD44780_D1) |
-                                    BIT (LCD_HD44780_D2) |
-                                    BIT (LCD_HD44780_D3)) ;
-  SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
+  SETBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D3) ;
+  display ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) :
+            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D2) ;
+  cursor  ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) :
+            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D1) ;
+  blink   ? SETBIT   (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) :
+            CLEARBIT (LCD_HD44780_DATA_PORT, LCD_HD44780_D0) ;
   lcd_hd44780_strobe () ;
 }
 

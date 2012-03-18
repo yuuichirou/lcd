@@ -21,6 +21,11 @@
  */
 
 #include "lcd.h"
+#include "macros.h"
+#include <avr/io.h>
+#include <util/delay.h>
+
+uint16_t       lcd_status ;
 
 void lcd_init (void)
 {
